@@ -69,6 +69,8 @@ class ImageStoryGenerator:
 
         except Exception as e:
             self.logger.error(f"Error processing image: {e}")
+            if 'response' in locals():
+                self.logger.error(f"Response: {response.text}")  # Log the full response if available
             return []
 
     def generate_story_from_image(self, image_data, people_names, genre, desired_length):
@@ -104,6 +106,8 @@ class ImageStoryGenerator:
             return story
         except Exception as e:
             self.logger.error(f"Error generating story: {e}")
+            if 'response' in locals():
+                self.logger.error(f"Response: {response.text}")  # Log the full response if available
             return "Error generating story."
 
 # For running the interactive widgets
